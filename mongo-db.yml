@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Unique key of the Deployment instance
+  name: mongo-app
+spec:
+  # 3 Pods should exist at all times.
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-app
+  template:
+    metadata:
+      labels:
+        # Apply this label to pods and default
+        # the Deployment label selector to this value
+        app: mongo-app
+    spec:
+      containers:
+      - name: mongo-app
+        # Run this image
+        image: mongo:latest
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  # Unique key of the Service instance
+  name: service-mongodb
+spec:
+  ports:
+    # Accept traffic sent to port 80
+    - name: tcp
+      port: 27017
+      targetPort: 27017
+  selector:
+    # Loadbalance traffic across Pods matching
+    # this label selector
+    app: mongo-app
+  # Create an HA proxy in the cloud provider
+  # with an External IP address - *Only supported
+  # by some cloud providers*
+  
