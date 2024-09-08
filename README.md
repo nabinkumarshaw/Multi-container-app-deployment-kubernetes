@@ -6,4 +6,4 @@
 
 ##  3)Implemented Kubernetes features like rollouts and rollbacks for zero-downtime updates.
 
-## 4)Deployed locally with Minikube and on AWS servers using kubectl.
+## 4)Deployed locally with Minikube using kubectl.
