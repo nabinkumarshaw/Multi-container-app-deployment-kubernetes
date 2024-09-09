@@ -5,7 +5,7 @@ metadata:
   name: node-app
 spec:
   # 3 Pods should exist at all times.
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: node-app
@@ -50,7 +50,5 @@ spec:
     # this label selector
     app: node-app
   type: LoadBalancer
-  # Create an HA proxy in the cloud provider
-  # with an External IP address - *Only supported
-  # by some cloud providers*
+
   
