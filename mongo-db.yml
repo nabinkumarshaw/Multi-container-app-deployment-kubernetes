@@ -5,7 +5,7 @@ metadata:
   name: mongo-app
 spec:
   # 3 Pods should exist at all times.
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mongo-app
@@ -35,10 +35,5 @@ spec:
       port: 27017
       targetPort: 27017
   selector:
-    # Loadbalance traffic across Pods matching
-    # this label selector
     app: mongo-app
-  # Create an HA proxy in the cloud provider
-  # with an External IP address - *Only supported
-  # by some cloud providers*
   
